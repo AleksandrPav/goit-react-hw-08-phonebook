@@ -14,11 +14,13 @@ const ContactsForm = ({ onSubmit, contacts, deleteContact }) => {
     }
 
     const findDuble = () => {
-        if (contacts.find(contact => contact.name === name && contact.number === number)) {
-            alert(`${name} is already exists`);
-            deleteContact(name);
+        const isDuble = contacts.find((contact) => contact.name === name);
+        isDuble && alert(`${name} is already in contacts`);
+        if (isDuble) {
+            deleteContact(isDuble.id);
         }
     }
+
 
     const onChangeInput = (e) => {
     const { name, value } = e.target;

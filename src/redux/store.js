@@ -1,4 +1,7 @@
+
 import { createStore } from 'redux';
+import { ADD_CONTACT, DELETE_CONTACT, CHANGE_FILTER } from './types';
+
 
 
 const initialStore = {
@@ -13,10 +16,22 @@ const initialStore = {
   }
 }
 
-const reducer = (store) => {
-    return store;
+const reducer = (store = initialStore, {type, payload}) => {
+  switch (type) {
+    case ADD_CONTACT:
+      const newContact = [...store.contacts.items, payload];
+      return { ...store, contacts: { ...store.contacts, items: newContact } };
+    case DELETE_CONTACT:
+      const newContacts = store.contacts.items.filter(({ id }) => id !== payload);
+      return { ...store, contacts: { ...store.contacts, items: newContacts } };
+    case CHANGE_FILTER:
+      return { ...store, contacts: { ...store.contacts, filter: payload } };
+    default:
+      return store;
+  }
+
 }
 
-const store = createStore(reducer, initialStore);
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;
