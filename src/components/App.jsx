@@ -5,13 +5,21 @@ import ContactsList from "./ContactList/ContactList";
 import css from "./App.module.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addContact, deleteContact, changeFilter } from "redux/actions";
-import { getContacts, getFilter } from "redux/selectors";
+import { addContact, deleteContact } from "redux/contact/contact-actions";
+import changeFilter from "redux/filter/filter-actions";
+
+import getContacts from "redux/contact/contact-selectors";
+import getFilter from "redux/filter/filter-selectors";
+
+
 
 const App = () => {
 
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  
+  const contacts = {
+    items: useSelector(getContacts),
+    filter: useSelector(getFilter),
+  }
 
   const dispatch = useDispatch();
  
@@ -28,13 +36,15 @@ const App = () => {
     dispatch(changeFilter(target.value));
   };
 
+  const { items, filter } = contacts;
+
   return (
     <div className={css.container}>
       <div className={css.header}>
         <h1 className={css.title}>Phonebook</h1>
         <ContactsForm
           onSubmit={onAddContact}
-          contacts={contacts}
+          contacts={items}
           deleteContact={onDeleteContact}
         />
        
@@ -44,7 +54,7 @@ const App = () => {
           onFilterChange={onChangeFilter }
         />
         <ContactsList
-          contacts={contacts}
+          contacts={items}
           filter={filter}
           deleteContact={onDeleteContact}
        />

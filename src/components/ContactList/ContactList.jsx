@@ -2,7 +2,7 @@ import React from "react";
 import css from "./ContactsList.module.css";
 
 const ContactsList = ({ contacts, filter, deleteContact }) => {
-    const filteredContacts = contacts.filter(contact =>
+    const filteredContacts = contacts.filter((contact) =>
         contact.name.toLowerCase().includes(filter.toLowerCase())
     );
     return (
