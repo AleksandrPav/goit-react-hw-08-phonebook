@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ContactsForm from "./ContactForm/ContactForm";
 import Filter from "./Filter/Filter";
 import ContactsList from "./ContactList/ContactList";
@@ -6,6 +6,9 @@ import css from "./App.module.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { addContact, deleteContact } from "redux/contact/contact-actions";
+
+import { fetchContacts } from "redux/contact/contact-operations";
+
 import changeFilter from "redux/filter/filter-actions";
 
 import getContacts from "redux/contact/contact-selectors";
@@ -15,13 +18,16 @@ import getFilter from "redux/filter/filter-selectors";
 
 const App = () => {
 
-  
   const contacts = {
     items: useSelector(getContacts),
     filter: useSelector(getFilter),
   }
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
  
   const onAddContact = (payload) => {
     const action = addContact(payload);

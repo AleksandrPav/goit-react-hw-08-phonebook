@@ -1,4 +1,7 @@
-const getContacts = (state) => state.items;
+const getContacts = state => state.contacts.items;
+
+
+
 
 export default getContacts ;
 

@@ -1,17 +1,32 @@
-import { addContact, deleteContact } from "./contact-actions";
+import { addContact, deleteContact, fetchContactsError, fetchContactsSuccess,fetchContactsLoading} from "./contact-actions";
 import { createReducer } from "@reduxjs/toolkit";
 
-const contactReducer = createReducer([
-  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-], {
-  [addContact]: (state, { payload }) => {
-    return [...state, payload];
+const initialStore = {
+  items: [],
+  loading: false,
+  error: null,
+}
+
+const contactReducer = createReducer(initialStore, {
+  [fetchContactsLoading]: (store) => {
+    store.loading = true;
+    store.error = null;
   },
-  [deleteContact]: (state, { payload }) => {
-    return state.filter((contact) => contact.id !== payload);
+  [fetchContactsSuccess]: (store, { payload }) => {
+    store.items = payload;
+    store.loading = false;
+    store.error = null;
+  },
+  [fetchContactsError]: (store, { payload }) => {
+    store.loading = false;
+    store.error = payload;
+  },
+  
+  [addContact]: (store, { payload }) => {
+    return [...store, payload];
+  },
+  [deleteContact]: (store, { payload }) => {
+    return store.filter((contact) => contact.id !== payload);
   },
 });
 
