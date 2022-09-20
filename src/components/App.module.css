@@ -1,11 +1,15 @@
+body{
+    font-size: 40px;
+    color: #010101;
+    background: radial-gradient(#edf1cf, #43acb4);
+
+}
 .container{
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
-    color: #010101 ;
-    background: radial-gradient(#edf1cf, #43acb4) ;
+    
     padding-top: 50px;
     padding-bottom: 50px;
 }
