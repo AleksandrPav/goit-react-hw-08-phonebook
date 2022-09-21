@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://AleksandrPav/goit-react-hw-07-phonebook",
+  "homepage": "https://AleksandrPav/goit-react-hw-08-phonebook",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.3",
@@ -12,8 +12,10 @@
     "nanoid": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.4.0",
     "react-loader-spinner": "^5.3.4",
     "react-redux": "^8.0.2",
+    "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
     "redux-persist": "^6.0.0",
     "web-vitals": "^2.1.3"
