@@ -6,16 +6,13 @@
 
 .link {
   display: inline-block;
-  padding: 10px 15px;
   text-decoration: none;
   color: rgb(41, 67, 62);
   font-size: 50px;
   font-weight: bold;
-  border-radius: 10px;
 }
 
 .link:hover {
-  background-color: #fff;
   color: #000;
 }
 
@@ -23,9 +20,7 @@
   display: inline-block;
   padding: 10px 15px;
   text-decoration: none;
-  background-color: rgb(41 67 62);
   color: #fff;
   font-size: 50px;
   font-weight: 600;
-  border-radius: 10px;
 }
