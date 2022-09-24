@@ -1,18 +1,27 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import contactsReducer from '../redux/contact/contact-reducer';
-import authReducer from '../redux/auth/auth-slice';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { contactsApi } from 'services/contactsApi';
+import { usersApi } from 'services/usersApi';
+import filterReducer from './filterSlice';
+import tokenReducer from './tokenSlice';
 
 const rootReducer = combineReducers({
-  contacts: contactsReducer,
-  auth: authReducer,
+  [contactsApi.reducerPath]: contactsApi.reducer,
+  [usersApi.reducerPath]: usersApi.reducer,
+  filter: filterReducer,
+  token: tokenReducer,
 });
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware({
       serializableCheck: false,
     }),
+    contactsApi.middleware,
+    usersApi.middleware,
+  ],
 });
-
 export default store;
+
+setupListeners(store.dispatch);

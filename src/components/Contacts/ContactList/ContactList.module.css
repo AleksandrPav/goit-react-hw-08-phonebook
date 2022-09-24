@@ -1,0 +1,11 @@
+.contacts {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  max-width: 100vw;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+
+  list-style: none;
+
+}

@@ -1,0 +1,16 @@
+.nav {
+    margin-left: auto;
+    padding-right: 16px;
+    gap: 20px;
+}
+
+.active {
+    font-weight: 700;
+}
+
+.brand {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
