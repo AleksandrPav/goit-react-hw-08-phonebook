@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Navbar, Nav, Container } from 'react-bootstrap';
-import { FiPhoneCall } from 'react-icons/fi';
+import { FcTwoSmartphones } from 'react-icons/fc';
 import { getToken } from 'redux/selectors';
 import { useLogoutUserMutation, useGetUserQuery } from 'services/usersApi';
 import { changeToken } from 'redux/tokenSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import s from './UseMenu.module.css';
+import css from './UseMenu.module.css';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -26,38 +26,42 @@ export default function App() {
   };
 
   return (
-    <Navbar className="mb-3" bg="primary" variant="dark">
+    <Navbar className={'mb-5'} bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#" className={s.brand}>
-          <FiPhoneCall />
-          <span>{`   Phonebook hw.8`}</span>
+        <Navbar.Brand href="#" className={css.brand}>
+          <FcTwoSmartphones className={css.icon} />
         </Navbar.Brand>
 
         <Navbar.Toggle />
-        <Nav className={s.nav}>
-          {!currentUser && (
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? s.active : s.inactive)}
-            >
-              <Navbar.Text>login</Navbar.Text>
-            </NavLink>
-          )}
+        <Nav className={css.nav}>
           {!currentUser && (
             <NavLink
               to="/signup"
-              className={({ isActive }) => (isActive ? s.active : s.inactive)}
+              className={({ isActive }) =>
+                isActive ? css.active : css.inactive
+              }
             >
-              <Navbar.Text>signup</Navbar.Text>
+              <Navbar.Text>Signup</Navbar.Text>
             </NavLink>
           )}
+          {!currentUser && (
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? css.active : css.inactive
+              }
+            >
+              <Navbar.Text>Login</Navbar.Text>
+            </NavLink>
+          )}
+
           <Navbar.Text>
             {currentUser && `Signed in as: ${currentUser}`}
           </Navbar.Text>
         </Nav>
 
         {currentUser && (
-          <Button type="button" variant="light" onClick={handleLogout}>
+          <Button type="button" variant="warning" onClick={handleLogout}>
             Logout
           </Button>
         )}

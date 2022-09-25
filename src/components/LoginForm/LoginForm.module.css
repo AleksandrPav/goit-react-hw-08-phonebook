@@ -1,0 +1,12 @@
+.container {
+  padding: 50px;
+  background-color: aliceblue;
+  width: 600px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+.button {
+  margin-top: 25px;
+}

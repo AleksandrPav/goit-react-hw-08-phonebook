@@ -4,7 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 import { changeFilter } from 'redux/filterSlice';
 import { getFilter } from 'redux/selectors';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import s from './Filter.module.css';
+import css from './Filter.module.css';
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function Filter() {
 
   return (
     <Container>
-      <Form className={s.filter}>
+      <Form className={css.filter}>
         <Form.Text>Find contacts by name</Form.Text>
         <InputGroup className="mb-3">
           <InputGroup.Text id="basic-addon1">

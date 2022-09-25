@@ -5,6 +5,7 @@ import { FiUser, FiAtSign, FiKey } from 'react-icons/fi';
 import { useSignupUserMutation } from 'services/usersApi';
 import { changeToken } from 'redux/tokenSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import css from './SignupForm.module.css';
 
 export default function SignupForm() {
   const dispatch = useDispatch();
@@ -34,11 +35,11 @@ export default function SignupForm() {
   };
 
   return (
-    <Container>
+    <Container className={css.container}>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-1">
           <Form.Label>Name</Form.Label>
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-1">
             <InputGroup.Text id="basic-addon1">
               <FiUser />
             </InputGroup.Text>
@@ -51,10 +52,11 @@ export default function SignupForm() {
               onChange={handleChange}
             />
           </InputGroup>
+          <Form.Text className="text-muted">Please enter your name.</Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-1">
           <Form.Label>Email address</Form.Label>
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-1">
             <InputGroup.Text id="basic-addon1">
               <FiAtSign />
             </InputGroup.Text>
@@ -67,14 +69,12 @@ export default function SignupForm() {
               onChange={handleChange}
             />
           </InputGroup>
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
+          <Form.Text className="text-muted">Please enter your email.</Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-1">
           <Form.Label>Password</Form.Label>
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-1">
             <InputGroup.Text id="basic-addon1">
               <FiKey />
             </InputGroup.Text>
@@ -88,8 +88,11 @@ export default function SignupForm() {
               onChange={handleChange}
             />
           </InputGroup>
+          <Form.Text className="text-muted">
+            Please enter your password.
+          </Form.Text>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className={css.button} variant="success" type="submit">
           Sign in
         </Button>
       </Form>

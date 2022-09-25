@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { useGetItemsQuery } from 'services/contactsApi';
 import { getFilteredContacts, getToken } from 'redux/selectors';
 import Contact from 'components/Contacts/ContactList/Contact';
-import s from './ContactList.module.css';
+import css from './ContactList.module.css';
 
 export default function ContactList() {
   const token = useSelector(getToken);
@@ -12,7 +12,7 @@ export default function ContactList() {
 
   return (
     <Container>
-      <ul className={s.contacts}>
+      <ul className={css.contacts}>
         {token &&
           filteredContacts.map(contact => (
             <Contact key={contact.id} contact={contact} />

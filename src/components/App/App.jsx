@@ -13,6 +13,7 @@ import SignupForm from 'components/SignupForm';
 import LoginForm from 'components/LoginForm';
 import Contacts from 'components/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import css from './App.module.css';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function App() {
   }, [getUserResult, getContactsResult, dispatch]);
 
   return (
-    <>
+    <div className={css.app}>
       <UserMenu />
       {(getUserResult.isFetching || getContactsResult.isFetching) && (
         <div className="d-flex justify-content-center">
@@ -67,6 +68,6 @@ export default function App() {
         />
         <Route path="*" element={<Navigate to="/contacts" />} />
       </Routes>
-    </>
+    </div>
   );
 }

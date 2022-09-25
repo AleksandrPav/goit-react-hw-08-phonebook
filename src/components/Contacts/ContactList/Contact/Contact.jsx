@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
-import { FiUserMinus } from 'react-icons/fi';
 import { useDeleteItemMutation, useGetItemsQuery } from 'services/contactsApi';
 import { changeFilter } from 'redux/filterSlice';
-import s from './Contact.module.css';
+import css from './Contact.module.css';
 
 export default function Contact({ contact: { id, name, number } }) {
   const dispatch = useDispatch();
@@ -21,18 +20,18 @@ export default function Contact({ contact: { id, name, number } }) {
     <li>
       {!isError && (
         <Card>
-          <Card.Body className={`d-flex ${s.contact}`}>
-            <div>
+          <Card.Body className={`d-flex ${css.contact}`}>
+            <div className={css.info}>
               <Card.Title>{name}</Card.Title>
               <Card.Text>{number}</Card.Text>
             </div>
             <Button
-              variant="primary"
+              variant="danger"
               type="button"
               value={id}
               onClick={handleDelete}
             >
-              <FiUserMinus />
+              delete
             </Button>
           </Card.Body>
         </Card>

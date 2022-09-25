@@ -9,7 +9,7 @@ import {
   Container,
   Toast,
 } from 'react-bootstrap';
-import { FiUser, FiPhone, FiUserPlus } from 'react-icons/fi';
+import { FiUser, FiPhone } from 'react-icons/fi';
 import { usePostItemMutation } from 'services/contactsApi';
 import { changeFilter } from 'redux/filterSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -75,8 +75,8 @@ export default function ContactForm() {
               </InputGroup>
             </Col>
             <Col md="auto">
-              <Button type="submit">
-                <FiUserPlus />
+              <Button variant="success" type="submit">
+                Add contact
               </Button>
             </Col>
           </Row>
