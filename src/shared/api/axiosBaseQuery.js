@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosBaseQuery =
-  ({ baseUrl } = { baseUrl: 'https://phonebook-api-pav.herokuapp.com' }) =>
+  ({ baseUrl } = { baseUrl: 'https://phonebook-api-pav.herokuapp.com/' }) =>
   async ({ url, method, data }, { getState }) => {
     try {
       const token = getState().token;
